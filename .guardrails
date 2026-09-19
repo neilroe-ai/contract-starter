@@ -6,7 +6,10 @@
 #
 # Same three tools, declared the way every other repo declares, run by the one
 # system instead of a fifth one.
-commit="uv run --group dev ruff check . && npx --yes @biomejs/biome check ."
+commit='{ [ -z "$GR_STAGED_PY" ] || uv run --group dev ruff check $GR_STAGED_PY; } && { [ -z "$GR_STAGED_WEB" ] || npx --yes @biomejs/biome check $GR_STAGED_WEB; }'
+# Scoped to what is actually being committed, not the whole tree: untracked
+# work-in-progress is not part of this commit and must not block it.
+
 commit_needs="uv npx"
 
 push="uv run --group dev pytest -q && npm test"

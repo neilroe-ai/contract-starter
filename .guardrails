@@ -1,0 +1,15 @@
+# What this repo checks, and when. Read by ~/.githooks/pre-commit.
+#
+# This is the template other repos get cloned from, so what it declares becomes
+# the default everywhere. It replaces .pre-commit-config.yaml, which named ruff,
+# mypy and biome and never ran once — the binary was never installed.
+#
+# Same three tools, declared the way every other repo declares, run by the one
+# system instead of a fifth one.
+commit="uv run --group dev ruff check . && npx --yes @biomejs/biome check ."
+commit_needs="uv npx"
+
+push="uv run --group dev pytest -q && npm test"
+push_needs="uv npm"
+
+skip='\.(md|txt|png|jpg|jpeg|webp|gif|ico|svg)$|^docs/'

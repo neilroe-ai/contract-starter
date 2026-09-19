@@ -5,8 +5,8 @@ is a one-line pointer to this file — do not move rules into it. If a setup ski
 `## Agent skills` block, it goes here, in this file.
 
 Keep this file short, durable, and about **judgment**. Reference facts live in the environment
-(config, `--help`, the justfile); rules that can be checked live in code, lint, types, or the
-pre-commit hook. This file holds only what needs a human's judgment — and **only the operator adds
+(config, `--help`, the justfile); rules that can be checked live in code, lint, types, or
+`.guardrails`. This file holds only what needs a human's judgment — and **only the operator adds
 to it. An agent may propose an entry from a real run; it may not expand this file itself.**
 
 ## Before you touch anything
@@ -73,11 +73,12 @@ deliberate local *convention* (a convention someone chose can be explained; stal
 ## Find current facts
 
 - What can this repo run? → the `justfile`
-- What's checked before commit? → `.pre-commit-config.yaml` and the README's "what is checked" line
+- What's checked before commit? → `.guardrails` and the README's "what is checked" line.
+  ⛔ Never re-add `.pre-commit-config.yaml` — it disarms the machine-wide hooks. `sh ~/.githooks/doctor .`
 - Why is a convention here? → `docs/decisions.md` (this template) or `docs/adr/` (a client repo)
 - Installed skills to prefer over reinventing: `grilling` (interview to a brief), `tdd`, `code-review`
   (two axes — standards and spec — reported separately), `handoff`, `diagnosing-bugs`,
-  `writing-for-agents`, `archify` (diagrams), and `git-guardrails-claude-code` (the safety hook).
+  `writing-for-agents` and `archify` (diagrams).
 
 ## Anti-truncation
 

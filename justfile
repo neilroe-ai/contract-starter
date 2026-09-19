@@ -29,7 +29,7 @@ test:
     uv run pytest
     npm test
 
-# The gate: what must be green before a commit. Mirrors the pre-commit hook.
+# The gate: what must be green before a commit. Wider than `.guardrails` runs — run it yourself.
 check: lint typecheck test
 
 # Create an isolated worktree for one task (see scripts/setup-worktree.sh).
